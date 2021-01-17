@@ -19,6 +19,10 @@ function App() {
         .then(data => setResult(data.Search))
         .catch(error => console.log(error))
     }
+
+    const addNomination = (movie) =>{
+        setNominations([...nominations, movie])
+    }
     
     useEffect(fetchMovies, [searchVal])
 
@@ -29,7 +33,7 @@ function App() {
             </header>
             <Nominations nominations={nominations}/>
             <SearchBar handleInputChange={(val) => setSearchVal(val)} value={searchVal}/>
-            <Results searchVal={searchVal} movies={result}/>
+            <Results searchVal={searchVal} movies={result} addNomination={addNomination}/>
         </div>
     );
 }
