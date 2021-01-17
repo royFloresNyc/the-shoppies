@@ -1,10 +1,15 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Col, Card, Button } from 'react-bootstrap'
 
-const MovieCard = ({ movie, addNomination }) => {
+const MovieCard = ({ movie, addNomination, isNominated }) => {
+    const [btnClicked, setBtnClicked] = useState(false)
+
     const handleBtnClick = () => {
         addNomination(movie)
+        setBtnClicked(true)
     }
+
+    const nominated = isNominated(movie.imdbID)
 
     return (
         <Col className='pt-3'>
@@ -13,7 +18,7 @@ const MovieCard = ({ movie, addNomination }) => {
                 <Card.Body>
                     <Card.Title>{movie.Title}</Card.Title>
                     <Card.Text>{movie.Year}</Card.Text>
-                    <Button onClick={handleBtnClick} variant='warning' disabled={false}>Nominate</Button>
+                    <Button onClick={handleBtnClick} variant='warning' disabled={nominated}>{nominated ? 'Nominated' : 'Nominate'}</Button>
                 </Card.Body>
             </Card>
         </Col>

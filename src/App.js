@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import './App.css';
-import { Container, Col, Row} from 'react-bootstrap'
+//import { Container, Col, Row} from 'react-bootstrap'
 
 import SearchBar from './Components/SearchBar';
 import Results from './Components/Results';
@@ -11,7 +11,7 @@ import Nominations from './Components/Nominations';
 function App() {
     const [searchVal, setSearchVal] = useState('')
     const [result, setResult] = useState('')
-    const [nominations, setNominations] = useState('')
+    const [nominations, setNominations] = useState([])
 
     const fetchMovies = () => {
         fetch(`http://www.omdbapi.com/?s=${encodeURI(searchVal)}&apikey=${OMDB_KEY}`)
@@ -26,6 +26,10 @@ function App() {
     
     useEffect(fetchMovies, [searchVal])
 
+    const isNominated = (movieId) =>{
+        return nominations.some(movie => movie.imdbID === movieId)
+    }
+
     return (
         <div className="App">
             <header className="App-header">
@@ -33,7 +37,7 @@ function App() {
             </header>
             <Nominations nominations={nominations}/>
             <SearchBar handleInputChange={(val) => setSearchVal(val)} value={searchVal}/>
-            <Results searchVal={searchVal} movies={result} addNomination={addNomination}/>
+            <Results searchVal={searchVal} movies={result} addNomination={addNomination} isNominated={isNominated}/>
         </div>
     );
 }

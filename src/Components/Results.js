@@ -3,10 +3,14 @@ import { Container, Row } from 'react-bootstrap'
 
 import MovieCard from './MovieCard'
 
-const Results = ({ searchVal, movies, addNomination}) => {
+const Results = ({ searchVal, movies, addNomination, isNominated}) => {
 
     const renderMovies = () => {
-        return movies.map((movie, indx) => <MovieCard key={indx} movie={movie} addNomination={addNomination}/>)
+        return movies.map((movie, indx) => <MovieCard 
+            key={indx} movie={movie} 
+            addNomination={addNomination}
+            isNominated={isNominated}
+        />)
     }
 
     return (
