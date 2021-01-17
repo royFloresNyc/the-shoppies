@@ -1,7 +1,7 @@
 import React from 'react'
 import { Col, Card, Button } from 'react-bootstrap'
 
-const MovieCard = ({ movie, addNomination, isNominated }) => {
+const MovieCard = ({ movie, addNomination, isNominated, hideNomBtn }) => {
 
     const handleBtnClick = () => {
         addNomination(movie)
@@ -16,7 +16,7 @@ const MovieCard = ({ movie, addNomination, isNominated }) => {
                 <Card.Body>
                     <Card.Title>{movie.Title}</Card.Title>
                     <Card.Subtitle>({movie.Year})</Card.Subtitle>
-                    <Button className='mt-2'onClick={handleBtnClick} variant='warning' disabled={nominated}>{nominated ? 'Nominated' : 'Nominate'}</Button>
+                    {!hideNomBtn && <Button className='mt-2'onClick={handleBtnClick} variant='warning' disabled={nominated}>{nominated ? 'Nominated' : 'Nominate'}</Button>}
                 </Card.Body>
             </Card>
         </Col>

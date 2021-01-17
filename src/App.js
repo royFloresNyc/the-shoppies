@@ -15,6 +15,7 @@ function App() {
     const [result, setResult] = useState('')
     const [nominations, setNominations] = useState([])
     const [completeModalVisible, setCompleteModalVisible] = useState(false)
+    const [hideNomBtn, setHideNomBtn] = useState(false)
 
     const fetchMovies = () => {
         fetch(`http://www.omdbapi.com/?s=${encodeURI(searchVal)}&apikey=${OMDB_KEY}`)
@@ -24,7 +25,9 @@ function App() {
     }
 
     const addNomination = (movie) =>{
-        setNominations([...nominations, movie])
+        if (!hasFiveNoms()) {
+            setNominations([...nominations, movie])
+        }
     }
 
     const hasFiveNoms = () => {
@@ -34,6 +37,9 @@ function App() {
     useEffect(() => {
         if (hasFiveNoms()){
            setCompleteModalVisible(true) 
+           setHideNomBtn(true)
+        } else {
+            setHideNomBtn(false)
         }
     }, [nominations])
 
@@ -56,7 +62,7 @@ function App() {
             <AppHeader/>
             <Nominations nominations={nominations} removeNomination={removeNomination}/>
             <SearchBar handleInputChange={(val) => setSearchVal(val)} value={searchVal}/>
-            <Results searchVal={searchVal} movies={result} addNomination={addNomination} isNominated={isNominated}/>
+            <Results searchVal={searchVal} movies={result} addNomination={addNomination} isNominated={isNominated} hideNomBtn={hideNomBtn}/>
             <AppModal modalVisible={completeModalVisible} hideModal={() => setCompleteModalVisible(false)}/>
         </div>
     );
