@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import './App.css';
-//import { Container, Col, Row} from 'react-bootstrap'
 
 import SearchBar from './Components/SearchBar';
 import Results from './Components/Results';
@@ -30,12 +29,19 @@ function App() {
         return nominations.some(movie => movie.imdbID === movieId)
     }
 
+    const removeNomination = (movieId) => {
+        let newArray = [...nominations]
+        let indx = newArray.findIndex(movie => movie.imdbID === movieId)
+        newArray.splice(indx, 1)
+        setNominations(newArray)
+    }
+
     return (
         <div className="App">
             <header className="App-header">
                 <h1>Welcome to the SHOPPIES</h1>
             </header>
-            <Nominations nominations={nominations}/>
+            <Nominations nominations={nominations} removeNomination={removeNomination}/>
             <SearchBar handleInputChange={(val) => setSearchVal(val)} value={searchVal}/>
             <Results searchVal={searchVal} movies={result} addNomination={addNomination} isNominated={isNominated}/>
         </div>

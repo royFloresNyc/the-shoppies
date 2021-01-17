@@ -3,11 +3,11 @@ import { Container, Row } from 'react-bootstrap'
 
 import NominationCard from './NominationCard'
 
-const Nominations = ({ nominations }) => {
+const Nominations = ({ nominations, removeNomination }) => {
 
     const renderNominationCards = () => {
         const placeholder = [ 1, 2, 3, 4, 5]
-        return placeholder.map( (el, indx) => <NominationCard key={indx} movie={nominations[indx]}/>)
+        return placeholder.map( (el, indx) => <NominationCard key={indx} movie={nominations[indx]} removeNomination={removeNomination}/>)
     }
     
     return (

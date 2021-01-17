@@ -16,7 +16,7 @@ const Results = ({ searchVal, movies, addNomination, isNominated}) => {
     return (
         <Container>
             <Row className='pl-3'>
-                Results for {searchVal ? `"${searchVal}"` : '...'}
+                {searchVal ? `Results for "${searchVal}"` : null}
             </Row>
             <Row xs={2} sm={5}>
                 {movies ? renderMovies() : null}
