@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Row } from 'react-bootstrap'
+import { Container, Row} from 'react-bootstrap'
 
 import NominationCard from './NominationCard'
 
@@ -11,10 +11,10 @@ const Nominations = ({ nominations, removeNomination }) => {
     }
     
     return (
-        <Container className='pt-5 pb-5'>
+        <Container className='pt-5 pb-5 App-container'>
             <Row xs={2} sm={5}>
                 {renderNominationCards()}
-            </Row>
+            </Row> 
         </Container>
     )
 }

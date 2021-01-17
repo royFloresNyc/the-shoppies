@@ -9,7 +9,7 @@ const SearchBar = ({ handleInputChange, value }) => {
     }
 
     return (
-        <Container>
+        <Container className='App-container'>
             <Form>
                 <Form.Group>
                     <InputGroup>

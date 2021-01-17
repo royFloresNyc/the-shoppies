@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+  background: url("./Images/theatre-lights.jpg") no-repeat center center fixed;
+  background-size: cover;
+  min-height: 100vh;
 }
 
 .App-header {
@@ -11,4 +14,12 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+.App-container {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+button {
+  background-color: #dbb42c;
 }

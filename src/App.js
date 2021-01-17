@@ -1,16 +1,20 @@
 import { useEffect, useState } from 'react';
-import './App.css';
+import { Modal } from 'react-bootstrap';
 
+import './App.css';
 import SearchBar from './Components/SearchBar';
 import Results from './Components/Results';
 import { OMDB_KEY } from './keys';
 import Nominations from './Components/Nominations';
+import AppModal from './Components/AppModal';
+import AppHeader from './Components/AppHeader';
 
 
 function App() {
     const [searchVal, setSearchVal] = useState('')
     const [result, setResult] = useState('')
     const [nominations, setNominations] = useState([])
+    const [completeModalVisible, setCompleteModalVisible] = useState(false)
 
     const fetchMovies = () => {
         fetch(`http://www.omdbapi.com/?s=${encodeURI(searchVal)}&apikey=${OMDB_KEY}`)
@@ -22,6 +26,17 @@ function App() {
     const addNomination = (movie) =>{
         setNominations([...nominations, movie])
     }
+
+    const hasFiveNoms = () => {
+        return nominations.length >= 5
+    }
+    
+    useEffect(() => {
+        if (hasFiveNoms()){
+           setCompleteModalVisible(true) 
+        }
+    }, [nominations])
+
     
     useEffect(fetchMovies, [searchVal])
 
@@ -38,12 +53,11 @@ function App() {
 
     return (
         <div className="App">
-            <header className="App-header">
-                <h1>Welcome to the SHOPPIES</h1>
-            </header>
+            <AppHeader/>
             <Nominations nominations={nominations} removeNomination={removeNomination}/>
             <SearchBar handleInputChange={(val) => setSearchVal(val)} value={searchVal}/>
             <Results searchVal={searchVal} movies={result} addNomination={addNomination} isNominated={isNominated}/>
+            <AppModal modalVisible={completeModalVisible} hideModal={() => setCompleteModalVisible(false)}/>
         </div>
     );
 }
