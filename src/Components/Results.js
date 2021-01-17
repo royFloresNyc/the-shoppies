@@ -1,25 +1,20 @@
 import React from 'react'
-import { Container, Row } from 'react-bootstrap'
+import { Container, Row, Col } from 'react-bootstrap'
+
+import MovieCard from './MovieCard'
 
 const Results = ({ searchVal, movies}) => {
 
     const renderMovies = () => {
-        return movies.map((movie => {
-            return (
-                <div className='border'>
-                    <h5>{movie.Title}</h5>
-                    <h5>({movie.Year})</h5>
-                </div>
-            )
-        }))
+        return movies.map((movie, indx) => <MovieCard key={indx} movie={movie}/>)
     }
 
     return (
         <Container className='border'>
-            <Row>
-                <h3>{`Results for ${searchVal ? `"${searchVal}"` : '...'}`}</h3>
+            <Row className='pl-3'>
+                Results for {searchVal ? `"${searchVal}"` : '...'}
             </Row>
-            <Row>
+            <Row xs={2} sm={5}>
                 {movies ? renderMovies() : null}
             </Row>
         </Container>

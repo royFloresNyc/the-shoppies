@@ -26,15 +26,7 @@ function App() {
                 <h1>Welcome to the SHOPPIES</h1>
             </header>
             <SearchBar handleInputChange={(val) => setSearchVal(val)} value={searchVal}/>
-            <Container>
-                <Row>
-                    <Col sm={6}>
-                        <Results searchVal={searchVal} movies={result}/>
-                    </Col>
-                    <Col sm={6}>
-                    </Col>
-                </Row>
-            </Container>
+            <Results searchVal={searchVal} movies={result}/>
         </div>
     );
 }
