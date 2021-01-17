@@ -9,7 +9,7 @@ const MovieCard = ({ movie }) => {
                 <Card.Body>
                     <Card.Title>{movie.Title}</Card.Title>
                     <Card.Text>{movie.Year}</Card.Text>
-                    <Button>Nominate</Button>
+                    <Button variant='warning'>Nominate</Button>
                 </Card.Body>
             </Card>
         </Col>
