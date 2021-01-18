@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { Modal } from 'react-bootstrap';
 
 import './App.css';
 import SearchBar from './Components/SearchBar';

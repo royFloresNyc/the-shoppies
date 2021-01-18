@@ -7,7 +7,7 @@ function AppModal({ modalVisible, hideModal}) {
     return (
         <div>
             <Modal show={modalVisible} onHide={hideModal} centered>
-                <Modal.Header className='bg-secondary' closeButton className='App-modal-header'></Modal.Header>
+                <Modal.Header className='bg-secondary App-modal-header' closeButton></Modal.Header>
                 <Modal.Body className="text-center App-modal-body" >
                     <h3>You have successfully entered</h3>
                     <Row>
