@@ -6,20 +6,33 @@
 }
 
 .App-header {
-  background-color: #282c34;
   min-height: 5vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  display: inline;
   font-size: calc(10px + 2vmin);
+}
+
+p.App-header-text {
+  text-align: justify;
+  display: inline;
   color: white;
+}
+
+h1.App-header-text {
+  display: inline-block;
+  font-weight: 900;
+  color: rgb(210, 184, 95);
 }
 
 .App-container {
   background-color: rgba(255, 255, 255, 0.3);
 }
 
-button {
-  background-color: #dbb42c;
+.App-button {
+  color: rgb(210, 184, 95);
+}
+
+.App-alert,
+.App-modal-header,
+.App-modal-body {
+  background-color: rgb(210, 184, 95);
 }

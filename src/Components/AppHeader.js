@@ -2,10 +2,9 @@ import React from 'react';
 
 function AppHeader(props) {
     return (
-        <div>
-            <header className="App-header">
-                <h1>The Shoppies</h1>
-            </header>
+        <div className="App-header">
+                <h1 className="App-header-text"><b><i>shoppies</i></b></h1>
+                <p className="App-header-text"><i> Nomination Portal</i></p>
         </div>
     );
 }

@@ -16,7 +16,8 @@ const MovieCard = ({ movie, addNomination, isNominated, hideNomBtn }) => {
                 <Card.Body>
                     <Card.Title>{movie.Title}</Card.Title>
                     <Card.Subtitle>({movie.Year})</Card.Subtitle>
-                    {!hideNomBtn && <Button className='mt-2'onClick={handleBtnClick} variant='warning' disabled={nominated}>{nominated ? 'Nominated' : 'Nominate'}</Button>}
+                    {!hideNomBtn && <Button className='mt-2 App-button'onClick={handleBtnClick} variant='warning' 
+                        disabled={nominated}>{nominated ? 'Nominated' : 'Nominate'}</Button>}
                 </Card.Body>
             </Card>
         </Col>

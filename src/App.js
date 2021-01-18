@@ -60,7 +60,7 @@ function App() {
     return (
         <div className="App">
             <AppHeader/>
-            <Nominations nominations={nominations} removeNomination={removeNomination}/>
+            <Nominations nominations={nominations} availableNominations={5 - nominations.length} removeNomination={removeNomination}/>
             <SearchBar handleInputChange={(val) => setSearchVal(val)} value={searchVal}/>
             <Results searchVal={searchVal} movies={result} addNomination={addNomination} isNominated={isNominated} hideNomBtn={hideNomBtn}/>
             <AppModal modalVisible={completeModalVisible} hideModal={() => setCompleteModalVisible(false)}/>
