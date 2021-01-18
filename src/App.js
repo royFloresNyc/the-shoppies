@@ -17,7 +17,7 @@ function App() {
     const [hideNomBtn, setHideNomBtn] = useState(false)
 
     const fetchMovies = () => {
-        fetch(`http://www.omdbapi.com/?s=${encodeURI(searchVal)}&apikey=${process.env.REACT_APP_OMDB_API_KEY}`)
+        fetch(`https://www.omdbapi.com/?s=${encodeURI(searchVal)}&apikey=${process.env.REACT_APP_OMDB_API_KEY}`)
         .then(resp => resp.json())
         .then(data => setResult(data.Search))
         .catch(error => console.log(error))
