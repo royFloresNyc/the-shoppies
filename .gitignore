@@ -25,4 +25,4 @@ yarn-error.log*
 .eslintcache
 
 # OMDB key
-keys.js
+.env

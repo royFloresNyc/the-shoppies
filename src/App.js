@@ -4,7 +4,6 @@ import { Modal } from 'react-bootstrap';
 import './App.css';
 import SearchBar from './Components/SearchBar';
 import Results from './Components/Results';
-import { OMDB_KEY } from './keys';
 import Nominations from './Components/Nominations';
 import AppModal from './Components/AppModal';
 import AppHeader from './Components/AppHeader';
@@ -18,7 +17,7 @@ function App() {
     const [hideNomBtn, setHideNomBtn] = useState(false)
 
     const fetchMovies = () => {
-        fetch(`http://www.omdbapi.com/?s=${encodeURI(searchVal)}&apikey=${OMDB_KEY}`)
+        fetch(`http://www.omdbapi.com/?s=${encodeURI(searchVal)}&apikey=${process.env.REACT_APP_OMDB_API_KEY}`)
         .then(resp => resp.json())
         .then(data => setResult(data.Search))
         .catch(error => console.log(error))
